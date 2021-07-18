@@ -1,0 +1,27 @@
+<div>
+    <div style="text-align: center;">
+        <h4>Listagem de Pessoas</h4>
+    </div>
+
+    <div>
+        <a href="nova">Nova</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pessoa in pessoas %}
+            <tr>
+                <td>{{ pessoa }}</td>
+                <td>
+                    <a href="editar">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
