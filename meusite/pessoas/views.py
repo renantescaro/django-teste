@@ -21,11 +21,21 @@ def editar(request:HttpRequest, pessoa_id:int):
 
 def salvar(request:HttpRequest):
     if request.method == 'POST':
-        Pessoa(
-            nome     = request.POST.get('nome'),
-            email    = request.POST.get('email'),
-            telefone = request.POST.get('telefone'),
-        ).save()
+        # inserir
+        if request.POST.get('id') is None:
+            Pessoa(
+                nome     = request.POST.get('nome'),
+                email    = request.POST.get('email'),
+                telefone = request.POST.get('telefone'),
+            ).save()
+            return redirect('/pessoas')
+        
+        # editar
+        pessoa:Pessoa   = Pessoa.objects.get(pk=int(request.POST.get('id')))
+        pessoa.nome     = request.POST.get('nome')
+        pessoa.email    = request.POST.get('email')
+        pessoa.telefone = request.POST.get('telefone')
+        pessoa.save()
     return redirect('/pessoas')
 
 
