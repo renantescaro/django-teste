@@ -1,32 +1,33 @@
-{% load static %}
-
-<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-<div>
-    <div style="text-align: center;">
-        <h4>Listagem de Pessoas</h4>
-    </div>
-
+{% extends "inicial.html" %}
+{% block conteudo %}
     <div>
-        <a class="btn btn-warning" style="color: white;" href="nova">Nova</a>
+        <div style="text-align: center;">
+            <h4>Listagem de Pessoas</h4>
+        </div>
+
+        <div>
+            <a class="btn btn-warning" style="color: white;" href="nova">Nova</a>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pessoa in pessoas %}
+                <tr>
+                    <td>{{ pessoa.nome }}</td>
+                    <td>{{ pessoa.telefone }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{pessoa.id}}/editar">Editar</a>
+                        <a class="btn btn-danger" href="{{pessoa.id}}/apagar">Apagar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for pessoa in pessoas %}
-            <tr>
-                <td>{{ pessoa.nome }}</td>
-                <td>
-                    <a class="btn btn-primary" href="{{pessoa.id}}/editar">Editar</a>
-                    <a class="btn btn-danger" href="{{pessoa.id}}/apagar">Apagar</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% endblock %}
