@@ -1,41 +1,40 @@
-{% load static %}
-
-<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-<div>
-    <div style="text-align: center;">
-        <h4>Pessoa</h4>
-    </div>
-
-    <form action="/pessoas/salvar" method="post">
-        {% csrf_token %}
-        <div class="row form-group" style="padding: 2%;">
-            {% if pessoa.id is not None %}
-                <div class="col-12 col-md-12">
-                    <label for="">Id</label>
-                    <input class="form-control" type="text" name="id" value="{{pessoa.id}}">
-                </div>
-            {% endif %}
-            <div class="col-12 col-md-12">
-                <label for="">Nome</label>
-                <input class="form-control" type="text" name="nome" value="{{pessoa.nome}}" required>
-            </div>
-            <div class="col-12 col-md-12">
-                <label for="">Telefone</label>
-                <input class="form-control" type="tel" name="telefone" value="{{pessoa.telefone}}" required>
-            </div>
-            <div class="col-12 col-md-12">
-                <label for="">Email</label>
-                <input class="form-control" type="email" name="email" value="{{pessoa.email}}" required>
-            </div>
-            <div class="col-2">
-                <button type="submit" class="btn btn-primary">
-                    Salvar
-                </button>
-                <a href="/pessoas" class="btn btn-warning"style="color: white;">
-                    Cancelar
-                </a >
-            </div>
+{% extends "base.html" %}
+{% block conteudo %}
+    <div>
+        <div style="text-align: center;">
+            <h4>Pessoa</h4>
         </div>
-    </form>
-</div>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+        <form action="/pessoas/salvar" method="post">
+            {% csrf_token %}
+            <div class="row form-group" style="padding: 2%;">
+                {% if pessoa.id is not None %}
+                    <div class="col-12 col-md-12">
+                        <label for="">Id</label>
+                        <input class="form-control" type="text" name="id" value="{{pessoa.id}}">
+                    </div>
+                {% endif %}
+                <div class="col-12 col-md-12">
+                    <label for="">Nome</label>
+                    <input class="form-control" type="text" name="nome" value="{{pessoa.nome}}" required>
+                </div>
+                <div class="col-12 col-md-12">
+                    <label for="">Telefone</label>
+                    <input class="form-control" type="tel" name="telefone" value="{{pessoa.telefone}}" required>
+                </div>
+                <div class="col-12 col-md-12">
+                    <label for="">Email</label>
+                    <input class="form-control" type="email" name="email" value="{{pessoa.email}}" required>
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary">
+                        Salvar
+                    </button>
+                    <a href="/pessoas" class="btn btn-warning"style="color: white;">
+                        Cancelar
+                    </a >
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
