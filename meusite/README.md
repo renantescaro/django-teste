@@ -1,16 +1,18 @@
 ### Inicia aplicação:
 * django-teste\Scripts\activate.bat
-* python config/manage.py runserver
+* python meusite/manage.py runserver
 
 <br>
 
 ### Migrations:
-* python config/manage.py migrate
+* python meusite/manage.py makemigrations
+* python meusite/manage.py migrate
 
 <br>
 
 ## Criar App
-* python config/manage.py startapp nomeapp
+* cd meusite
+* python manage.py startapp nomeapp
 
 <br>
 
@@ -20,4 +22,4 @@
 <br>
 
 ## Criar super usuário ( ou acessando painel /admin )
-* python config/manage.py createsuperuser
+* python meusite/manage.py createsuperuser
