@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block conteudo %}
+    <div>
+        <div style="text-align: center;">
+            <h4>Listagem de Arquitetos</h4>
+        </div>
+
+        <div>
+            <a class="btn btn-warning" style="color: white;" href="nova">Nova</a>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for arquiteto in arquitetos %}
+                <tr>
+                    <td>{{ arquiteto.nome }}</td>
+                    <td>{{ arquiteto.telefone }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{arquiteto.id}}/editar">Editar</a>
+                        <a class="btn btn-danger" href="{{arquiteto.id}}/apagar">Apagar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
